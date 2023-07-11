@@ -8,10 +8,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Flutter Demo",
-      theme: ThemeData(
-        brightness: Brightness.dark,
-      ),
+      title: 'Gamify App',
+      theme: ThemeData(brightness: Brightness.dark),
       home: HomePage(),
     );
   }
