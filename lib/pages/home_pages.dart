@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../constants/data.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,6 +28,7 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           _featuredGamesWidget(),
           _gradientBoxWidget(),
+          _topLayoutWidget()
         ],
       ),
     );
@@ -69,6 +71,55 @@ class _HomePageState extends State<HomePage> {
             end: Alignment.topCenter,
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _topLayoutWidget() {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        vertical: _deviceHeight * 0.005,
+        horizontal: _deviceWidth * 0.025,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[_topBarWidget()],
+      ),
+    );
+  }
+
+  Widget _topBarWidget() {
+    return SizedBox(
+      width: _deviceWidth,
+      height: _deviceHeight * 0.13,
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            Icons.menu,
+            color: Colors.white,
+            size: 30,
+          ),
+          Row(
+            children: <Widget>[
+              Icon(
+                Icons.search,
+                color: Colors.white,
+                size: 30,
+              ),
+              SizedBox(width: _deviceWidth * 0.03),
+              Icon(
+                Icons.notifications_none,
+                color: Colors.white,
+                size: 30,
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
