@@ -10,8 +10,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late double _deviceWidth;
-  late double _deviceHeight;
+  late double _deviceWidth = 0;
+  late double _deviceHeight = 0;
+  int _selectedGame = 0;
 
   @override
   void initState() {
@@ -39,6 +40,11 @@ class _HomePageState extends State<HomePage> {
         width: _deviceWidth,
         height: _deviceHeight * 0.5,
         child: PageView(
+          onPageChanged: (index) {
+            setState(() {
+              _selectedGame = index;
+            });
+          },
           children: featuredGames.map(
             (game) {
               return Container(
@@ -85,7 +91,11 @@ class _HomePageState extends State<HomePage> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[_topBarWidget()],
+        children: <Widget>[
+          _topBarWidget(),
+          SizedBox(height: _deviceHeight * 0.13),
+          _featuredGamesInfoWidget(),
+        ],
       ),
     );
   }
@@ -119,6 +129,47 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           )
+        ],
+      ),
+    );
+  }
+
+  Widget _featuredGamesInfoWidget() {
+    return SizedBox(
+      width: _deviceWidth,
+      height: _deviceHeight * 0.12,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            featuredGames[_selectedGame].title,
+            maxLines: 2,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: _deviceHeight * 0.040,
+            ),
+          ),
+          SizedBox(height: _deviceHeight * 0.01),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: featuredGames.map((game) {
+              bool isActive = game.title == featuredGames[_selectedGame].title;
+              double circleRadius = _deviceHeight * 0.008;
+              return Container(
+                height: circleRadius,
+                width: circleRadius,
+                margin: EdgeInsets.symmetric(horizontal: _deviceWidth * 0.0050),
+                decoration: BoxDecoration(
+                  color: isActive ? Colors.white : Colors.grey,
+                  borderRadius: BorderRadius.circular(circleRadius / 2),
+                ),
+              );
+            }).toList(),
+          ),
         ],
       ),
     );
