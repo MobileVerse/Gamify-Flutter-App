@@ -101,14 +101,6 @@ List<Game> featuredGames = [
     "",
     "Infinity Ward",
   ),
-  // Game(
-  //   "Dragon Ball Z: Kakarot",
-  //   GameImage(
-  //       "https://cdn3.dualshockers.com/wp-content/uploads/2020/01/dbx-kakarot.png",
-  //       ""),
-  //   "",
-  //   "CyberConnect2",
-  // ),
   Game(
     "Mortal Kombat 11",
     GameImage(

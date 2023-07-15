@@ -43,17 +43,18 @@ class ScrollableGamesWidget extends StatelessWidget {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(_game.coverImage.url),
+                    )
+                  ),
+                ),
+                if (_showTitle)
+                  Text(
+                    _game.title,
+                    maxLines: 2,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: _height * 0.08,
                     ),
                   ),
-                ),
-                Text(
-                  _game.title,
-                  maxLines: 2,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: _height * 0.08,
-                  ),
-                ),
               ],
             ),
           );
