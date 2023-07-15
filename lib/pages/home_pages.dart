@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
               _deviceWidth,
               _deviceHeight * 0.20,
               false,
-              games2,
+              games,
             ),
           ),
         ],
