@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamify_app/widgets/scrollable_games_widget.dart';
 
 import '../constants/data.dart';
 
@@ -95,6 +96,17 @@ class _HomePageState extends State<HomePage> {
           _topBarWidget(),
           SizedBox(height: _deviceHeight * 0.13),
           _featuredGamesInfoWidget(),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: _deviceHeight * 0.01,
+            ),
+            child: ScrollableGamesWidget(
+              _deviceWidth,
+              _deviceHeight * 0.24,
+              false,
+              games,
+            ),
+          ),
         ],
       ),
     );
